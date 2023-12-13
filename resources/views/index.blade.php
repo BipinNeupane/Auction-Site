@@ -1,6 +1,8 @@
-@include('templates.navbar')
+@extends('master')
+@section('title', 'Home')
 
-<body class="p-3 m-0 border-0 bd-example m-0 border-0">
+@section('content')
+<h1>Top Products</h1>
   <div class="container text-center">
     <div class="row">
       <div class="col-md-3 mb-4"> <!-- Use "col-md-3" to make each column take 3 out of 12 columns on medium-sized screens -->
@@ -25,6 +27,7 @@
     <a href="#" class="btn btn-primary">Go somewhere</a>
   </div>
 </div>
+
       </div>
       <div class="col-md-3 mb-4">
       <div class="card" style="width: 18rem;">
@@ -45,4 +48,4 @@
       <!-- Repeat the above 'col-md-3' structure for each card you want to add -->
     </div>
   </div>
-</body>
+@endsection
