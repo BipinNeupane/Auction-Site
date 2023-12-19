@@ -15,7 +15,8 @@ class Item extends Model
         'year_produced',
         'subject_classification',
         'description',
-        'auction_date',
+        'start_date',
+        'end_date',
         'estimated_price',
     ];
     
