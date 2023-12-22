@@ -1,56 +1,69 @@
 @extends('master');
 
 @section('content')
-<form action="" method="post" id="auction-form">
+
+<form action="{{ route('posty') }}" method="POST" id="auction-form" enctype="multipart/form-data">
   @csrf
+
+  
+  @if ($errors->any())
+        <div class="alert alert-danger">
+            <ul>
+                @foreach ($errors->all() as $error)
+                    <li>{{ $error }}</li>
+                @endforeach
+            </ul>
+        </div>
+    @endif
+
   <div class="container mt-5 border p-5">
     <h2 class="text-center">Create Auction</h2>
     <div class="form-row">
       <div class="form-group col-md-6">
         <label for="itemName">Item Name:</label>
-        <input type="text" class="form-control" id="itemName" placeholder="Enter item name" required>
+        <input type="text" class="form-control" name="product_name" id="itemName" placeholder="Enter item name" required>
       </div>
       <div class="form-group col-md-6">
         <label for="category">Category:</label>
-        <select class="form-select" aria-label="Default select example" id="category">
+        <select class="form-select" aria-label="Default select example" name="category" id="category">
           @foreach (app('App\Http\Controllers\CategoryController')->index() as $category)
-          <option value="{{ $category->category }}">{{ $category->category }}</option>
+          <option value="{{ $category->category_id }}">{{ $category->category }}</option>
           @endforeach
         </select>
       </div>
       <div class="form-group col-md-6">
-        <label for="itemName">Artist Name:</label>
-        <input type="text" class="form-control" id="artistName" placeholder="Enter artist name" required>
+        <label for="artist">Artist Name:</label>
+        <input type="text" class="form-control" name="artist" id="artist" placeholder="Enter artist name" required>
       </div>
       <div class="form-group col-md-6">
         <label for="description">Description:</label>
-        <textarea class="form-control" id="description" rows="3" placeholder="Enter item description" required></textarea>
+        <textarea class="form-control" name="description" id="description" rows="3" placeholder="Enter item description" required></textarea>
       </div>
 
       <div class="form-group col-md-6">
         <label for="itemName">Subject Classification:</label>
-        <input type="text" class="form-control" id="subject_classification" placeholder="Subject Classification" required>
+        <input type="text" class="form-control" name="subject_classification" id="subject_classification" placeholder="Subject Classification" required>
       </div>
 
       <div id="dynamic-fields-container"></div>
 
-      <div class="form-group col-md-6">
-        <label for="uploadImage">Upload Image</label>
-        <input type="file" class="form-control" id="uploadImage">
-      </div>
+      <div class="mb-3 col-md-6">
+                <label for="">Upload Image</label>
+                <input type="file" name="image" required class="course form-control">
+              </div>
       <div class="form-row">
         <div class="form-group col-md-6">
           <label for="startDate">Year Produced:</label>
-          <input type="datetime-local" class="form-control" id="year_produced" required>
+          <input type="date" class="form-control" name="year_produced" id="year_produced" required>
         </div>
         <div class="form-row">
           <div class="form-group col-md-6">
             <label for="startDate">Start Date:</label>
-            <input type="datetime-local" class="form-control" id="startDate" required>
+            <input type="date" class="form-control" name="startDate" id="startDate" required>
           </div>
           <div class="form-group col-md-6">
             <label for="endDate">End Date:</label>
-            <input type="datetime-local" class="form-control" id="endDate" required>
+            <input type="date" class="form-control" name="endDate" id="endDate" required>
           </div>
         </div>
         <div class="form-group col-md-6">
@@ -59,7 +72,7 @@
             <div class="input-group-prepend">
               <span class="input-group-text">$</span>
             </div>
-            <input type="number" class="form-control" id="startingBid" placeholder="Enter starting bid" step="0.01" required>
+            <input type="number" class="form-control" name="estimated_price" id="startingBid" placeholder="Enter starting bid" step="0.01" required>
           </div>
         </div>
         <br>
@@ -84,15 +97,15 @@
 
       // Add dynamic fields based on the selected category
       switch (category) {
-        case 'Drawings':
+        case '1':
           $('#dynamic-fields-container').append(`
                     <div class="form-group col-md-6">
                 <label for="material_used">Drawing Medium:</label>
-                <input type="text" class="form-control" name="material_used id="material_used" placeholder="Enter Drawing Medium" required>
+                <input type="text" class="form-control" name="material_used" id="material_used" placeholder="Enter Drawing Medium" required>
             </div>
 
             <div class="form-check">
-            <input class="form-check-input" type="checkbox" value="" id="isFramed">
+            <input class="form-check-input" type="checkbox" value="1" name="is_framed" id="isFramed">
             <label class="form-check-label" for="isFramed">
             Framed
             </label>
@@ -105,21 +118,21 @@
 
                 <div class="form-group col-md-6">
                     <label for="dimensions_length">Length:</label>
-                    <input type="number" class="form-control" name="dimensions_length" id="dimensions_length" step="1">
+                    <input type="number" class="form-control" name="length" id="dimensions_length" step="1">
                 </div>
                     `);
           break;
 
 
-        case 'Paintings':
+        case '2':
           $('#dynamic-fields-container').append(`
                     <div class="form-group col-md-6">
                 <label for="material_used">Painting Medium:</label>
-                <input type="text" class="form-control" name="material_used id="material_used" placeholder="Enter Painting Medium" required>
+                <input type="text" class="form-control" name="material_used" id="material_used" placeholder="Enter Painting Medium" required>
             </div>
 
             <div class="form-check">
-            <input class="form-check-input" type="checkbox" value="" id="isFramed">
+            <input class="form-check-input" type="checkbox" name="is_framed" value="1" id="isFramed">
             <label class="form-check-label" for="isFramed">
             Framed
             </label>
@@ -137,13 +150,13 @@
                     `);
           break;
 
-        case 'Photographic Images':
+        case '3':
           $('#dynamic-fields-container').append(`
                     <div class="form-group col-md-6">
                 <label for="photo_type">Type of Photograph:</label>
-                <select class="form-select" aria-label="Default select example" id="photo_type">
+                <select class="form-select" aria-label="Default select example" name="type" id="photo_type">
                     <option value="Black and White">Black and White</option>
-                    <option value="Colour">Colour</option>
+                    <option value="Color">Color</option>
                 </select>
             </div>
         <div class="form-group col-md-6">
@@ -159,11 +172,11 @@
           break;
           // Add cases for other categories
 
-        case 'Sculptures':
+        case '4':
           $('#dynamic-fields-container').append(`
                     <div class="form-group col-md-6">
                 <label for="material_used">Materials Used:</label>
-                <input type="text" class="form-control" name="material_used id="material_used" placeholder="Enter Painting Medium" required>
+                <input type="text" class="form-control" name="material_used" id="material_used" placeholder="Enter Sculpture Medium" required>
             </div>
         <div class="form-group col-md-6">
                     <label for="height">Height:</label>
@@ -188,11 +201,11 @@
                     `);
           break;
 
-        case 'Carvings':
+        case '5':
           $('#dynamic-fields-container').append(`
                     <div class="form-group col-md-6">
                 <label for="material_used">Materials Used:</label>
-                <input type="text" class="form-control" name="material_used id="material_used" placeholder="Enter Painting Medium" required>
+                <input type="text" class="form-control" name="material_used" id="material_used" placeholder="Enter Painting Medium" required>
             </div>
         <div class="form-group col-md-6">
                     <label for="height">Height:</label>

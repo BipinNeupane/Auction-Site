@@ -10,6 +10,7 @@ class Category extends Model
     use HasFactory;
       
       protected $table = 'categories';
+      protected $primaryKey = 'category_id';
 
       // You can specify the fillable columns to allow mass assignment
       protected $fillable = ['category,

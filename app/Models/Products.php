@@ -9,13 +9,34 @@ class Products extends Model
 {
     use HasFactory;
 
-    protected $primaryKey = 'product_id'; // Specify the primary key name if it's different from 'id'
+    protected $table = 'products';
 
-    protected $fillable = ['item_id', 'material_used', 'is_framed', 'height', 'length', 'width', 'type','is_archived'];
+    protected $primaryKey = 'lot_number'; // Specify the primary key name if it's different from 'id'
 
-    public function item()
+    protected $fillable = [
+    'product_name',
+    'artist',
+    'category_id',
+    'year_produced',
+    'subject_classification',
+    'description',
+    'start_date',
+    'end_date',
+    'estimated_price',
+    'material_used',
+    'is_framed', 
+    'height', 
+    'length', 
+    'width', 
+    'weight',
+    'image',
+    'type',
+    'is_archived'
+    ];
+
+    public function category()
     {
-        return $this->belongsTo(Item::class, 'item_id');
+        return $this->belongsTo(Category::class, 'category_id');
     }
 
 }
