@@ -59,11 +59,11 @@
         <div class="form-row">
           <div class="form-group col-md-6">
             <label for="startDate">Start Date:</label>
-            <input type="date" class="form-control" name="startDate" id="startDate" required>
+            <input type="datetime-local" class="form-control" name="startDate" id="startDate" required>
           </div>
           <div class="form-group col-md-6">
             <label for="endDate">End Date:</label>
-            <input type="date" class="form-control" name="endDate" id="endDate" required>
+            <input type="datetime-local" class="form-control" name="endDate" id="endDate" required>
           </div>
         </div>
         <div class="form-group col-md-6">

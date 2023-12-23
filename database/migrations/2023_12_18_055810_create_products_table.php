@@ -19,8 +19,8 @@ return new class extends Migration
             $table->date('year_produced');
             $table->string('subject_classification');
             $table->text('description');
-            $table->date('start_date')->nullable();
-            $table->date('end_date')->nullable();
+            $table->timestamp('start_date')->nullable();
+            $table->timestamp('end_date')->nullable();
             $table->decimal('estimated_price', 10, 2);
             $table->string('material_used')->nullable();
             $table->boolean('is_framed')->default(0);

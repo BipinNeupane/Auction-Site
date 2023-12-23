@@ -195,3 +195,23 @@
      }
    }
  }
+
+
+ .countdown-timer{
+  color: red;
+ }
+
+ .estimated-price{
+  color: green;
+  font-weight: bold;
+ }
+
+ .card-ca{
+    border-width: 1px; /* Adjust the thickness as needed */
+    border-style: solid;
+    border-color: #000; 
+ }
+ .card-ca:hover {
+  transform: scale(1.05); /* Adjust the scale factor as needed */
+  box-shadow: 0 0 15px rgba(0, 0, 0, 0.3); /* Add a shadow on hover */
+}

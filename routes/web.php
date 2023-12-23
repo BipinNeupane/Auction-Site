@@ -23,12 +23,6 @@ Route::get('/', function () {
     return view('index', ['products' => $products]);
 });
 
-
-
-
-
-
-
 Route::get('/dynamicForm', function () {
     return view('dynamicForm');
 }); 
@@ -45,5 +39,11 @@ Route::post('/addAuction',[AuctionController::class, 'postProduct'])->name('post
 
 Route::post('students', [StudentController::class, 'store'])->name('save-student');
 
-Route::get('/admin/dashboard', [AdminController::class,'displayDashboard'] );
-Route::get('/admin/products', [AdminController::class,'displayProducts'] )->name('display-products');
+Route::get('/admin/dashboard', [AdminController::class,'displayDashboard'] )->name('display-dashboard');;
+Route::get('/admin/products/manage', [AdminController::class,'displayProducts'] )->name('display-products');
+Route::get('/admin/archive-products/{lot_number}', [AdminController::class,'archiveProduct'] )->name('archive-product');
+Route::get('/admin/products/{lot_number}', [AdminController::class,'unarchiveProduct'] )->name('unarchive-product');
+Route::get('/admin/archived-products', [AdminController::class,'displayArchived'] )->name('display-archived-products');
+Route::delete('/admin/products/{lot_number}', [AdminController::class,'destroyProduct'] )->name('destroy-product');
+Route::get('/admin/edit-products/{lot_number}', [AdminController::class,'displayEditProduct'] )->name('display-edit-product');
+Route::match(['get', 'post'], '/admin/edit-auction/{lot_number}', [AuctionController::class,'editProduct'] )->name('edit-product');
