@@ -1,6 +1,4 @@
-@extends('master')
 
-@section('content')
 
 <h2 class="text-center">Bid Auction</h2>
 
@@ -41,7 +39,3 @@
 <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.2/dist/umd/popper.min.js"></script>
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></script>
 
-
-
-
-@endsection

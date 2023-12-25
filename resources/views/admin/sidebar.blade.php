@@ -17,25 +17,23 @@
                         <li class="w-100">
                             <a href="{{route('display-archived-products') }}" class="nav-link px-0">Archived</a>
                         </li>
-                        <li>
-                            <a href="#" class="nav-link px-0"> <span class="d-none d-sm-inline">Product</span> 3</a>
-                        </li>
-                        <li>
-                            <a href="#" class="nav-link px-0"> <span class="d-none d-sm-inline">Product</span> 4</a>
-                        </li>
+                    
                     </ul>
                 </li>
 
                 <li>
-                    <a href="#submenu1" onclick=toggleCollapse() data-bs-toggle="collapse" class="nav-link px-0 align-middle">
-                        <i class="fs-4 bi-speedometer2"></i> <span class="ms-1 d-none d-sm-inline">Dashboard</span> </a>
-                    <ul class="collapse show nav flex-column ms-1" id="submenu1" data-bs-parent="#menu">
+                    <a href="#submenu1" data-bs-toggle="collapse" class="nav-link px-0 align-middle">
+                        <i class="fs-4 bi-person"></i> <span class="ms-1 d-none d-sm-inline">Users</span>
+                    </a>
+
+                    <ul class="collapse nav flex-column ms-1" id="submenu1" data-bs-parent="#menu">
                         <li class="w-100">
-                            <a href="#" class="nav-link px-0"> <span class="d-none d-sm-inline">Item</span> 1 </a>
+                            <a href="#" class="nav-link px-0">Clients</a>
                         </li>
-                        <li>
-                            <a href="#" class="nav-link px-0"> <span class="d-none d-sm-inline">Item</span> 2 </a>
+                        <li class="w-100">
+                            <a href="#" class="nav-link px-0">Buyers</a>
                         </li>
+                    
                     </ul>
                 </li>
                 <li>
@@ -79,10 +77,7 @@
         </div>
     </div>
     <script>
-        $(document).ready(function() {
-            // Toggle the collapse state when the "Products" link is clicked
-            $('#productsDropdown').click(function() {
-                $('#submenu3').collapse('toggle');
-            });
-        });
+      
+
+       
     </script>

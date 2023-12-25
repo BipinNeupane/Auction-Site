@@ -28,7 +28,7 @@
             <td>${{$product->estimated_price;}}</td>
             <td>{{$product->start_date}}</td>
             <td>{{$product->end_date;}}</td>
-            <td><a href="#"><button type="button" class="btn btn-outline-info btn-sm">View</button></a></td>
+            <td><a href="{{ route('view-product', ['lot_number' => $product->lot_number]) }}"><button type="button" class="btn btn-outline-info btn-sm">View</button></a></td>
             <td><a href="{{route('display-edit-product',['lot_number' => $product->lot_number])}}"><button type="button" class="btn btn-outline-primary btn-sm">Edit</button></a></td>
             <td><button type="button" class="btn btn-outline-danger btn-sm" data-bs-toggle="modal" data-bs-target="#deleteModal{{$product->lot_number}}">Delete</button></td>
             <td><button type="button" class="btn btn-outline-success btn-sm" data-bs-toggle="modal" data-bs-target="#unarchiveModal{{$product->lot_number}}">Unarchive</button></td>

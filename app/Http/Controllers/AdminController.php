@@ -26,6 +26,12 @@ class AdminController extends Controller
         return view('editAuction', ['products' => $product]);
     }
 
+    public function viewProduct($lot_number)
+    {
+        $product = Products::with('category')->findOrFail($lot_number);
+        return view('admin.view-auction', ['products' => $product]);
+    }
+
 
     public function displayArchived()
     {
@@ -61,7 +67,5 @@ class AdminController extends Controller
         $product->update(['is_archived' => 0]);
         return redirect()->back();
     }
-
-
-
+    
 }

@@ -46,4 +46,5 @@ Route::get('/admin/products/{lot_number}', [AdminController::class,'unarchivePro
 Route::get('/admin/archived-products', [AdminController::class,'displayArchived'] )->name('display-archived-products');
 Route::delete('/admin/products/{lot_number}', [AdminController::class,'destroyProduct'] )->name('destroy-product');
 Route::get('/admin/edit-products/{lot_number}', [AdminController::class,'displayEditProduct'] )->name('display-edit-product');
+Route::get('/admin/view-product/{lot_number}', [AdminController::class,'viewProduct'] )->name('view-product');
 Route::match(['get', 'post'], '/admin/edit-auction/{lot_number}', [AuctionController::class,'editProduct'] )->name('edit-product');

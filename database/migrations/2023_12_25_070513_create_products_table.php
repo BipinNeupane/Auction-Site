@@ -19,6 +19,7 @@ return new class extends Migration
             $table->date('year_produced');
             $table->string('subject_classification');
             $table->text('description');
+            $table->unsignedBigInteger('catalog_id');
             $table->timestamp('start_date')->nullable();
             $table->timestamp('end_date')->nullable();
             $table->decimal('estimated_price', 10, 2);
@@ -35,6 +36,12 @@ return new class extends Migration
 
             // Foreign key relationship
             $table->foreign('category_id')->references('category_id')->on('categories')->onDelete('cascade')->onUpdate('cascade');
+            $table->foreign('catalog_id')
+            ->references('catalog_id')
+            ->on('catalogs')
+            ->onDelete('cascade')
+            ->onUpdate('cascade');
+  
         });
     }
 
