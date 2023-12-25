@@ -37,8 +37,19 @@
                     </ul>
                 </li>
                 <li>
-                    <a href="#" class="nav-link px-0 align-middle">
-                        <i class="fs-4 bi-table"></i> <span class="ms-1 d-none d-sm-inline">Orders</span></a>
+                    <a href="#submenu2" data-bs-toggle="collapse" class="nav-link px-0 align-middle">
+                        <i class="bi bi-list-check"></i> <span class="ms-1 d-none d-sm-inline">Catalog</span>
+                    </a>
+
+                    <ul class="collapse nav flex-column ms-1" id="submenu2" data-bs-parent="#menu">
+                        <li class="w-100">
+                            <a href="#" class="nav-link px-0">Create</a>
+                        </li>
+                        <li class="w-100">
+                            <a href="#" class="nav-link px-0">Assign</a>
+                        </li>
+                    
+                    </ul>
                 </li>
                 <li>
                     <a href="#submenu2" data-bs-toggle="collapse" class="nav-link px-0 align-middle ">

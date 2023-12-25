@@ -19,7 +19,7 @@ return new class extends Migration
             $table->date('year_produced');
             $table->string('subject_classification');
             $table->text('description');
-            $table->unsignedBigInteger('catalog_id');
+            $table->unsignedBigInteger('catalog_id')->nullable();
             $table->timestamp('start_date')->nullable();
             $table->timestamp('end_date')->nullable();
             $table->decimal('estimated_price', 10, 2);
