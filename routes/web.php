@@ -27,6 +27,10 @@ Route::get('/dynamicForm', function () {
     return view('dynamicForm');
 }); 
 
+Route::get('/bid-auction', function () {
+    return view('bid-auction');
+}); 
+
 Route::get('/test', function () {
     return view('test');
 });
@@ -48,3 +52,8 @@ Route::delete('/admin/products/{lot_number}', [AdminController::class,'destroyPr
 Route::get('/admin/edit-products/{lot_number}', [AdminController::class,'displayEditProduct'] )->name('display-edit-product');
 Route::get('/admin/view-product/{lot_number}', [AdminController::class,'viewProduct'] )->name('view-product');
 Route::match(['get', 'post'], '/admin/edit-auction/{lot_number}', [AuctionController::class,'editProduct'] )->name('edit-product');
+Route::get('admin/create-catalog',[AdminController::class,'displayCreateCatalog'])->name('create-catalog');
+Route::post('admin/create-catalog',[AdminController::class,'saveCatalog'])->name('save-catalog');
+Route::get('admin/assign-catalog',[AdminController::class,'displayAssignCatalog'])->name('display-assign-catalog');
+Route::post('admin/assign-catalog',[AdminController::class,'assignCatalog'])->name('assign-catalog');
+

@@ -10,7 +10,7 @@
             <div class="col-md-6">
                 <h3 class="text-center">Product Image:</h3>
                 <br>
-                <img class="item-image" src="{{asset('uploads/1703338636.png')}}" alt="Product Image">
+                <img class="item-image" src="{{asset('uploads/'.$products->image)}}" alt="Product Image">
             </div>
             <div class="col-md-6 item-details">
                 <div class="item-title">Product Information</div>
