@@ -16,7 +16,7 @@
                     <div id="countdown-{{ $product->lot_number }}" class="countdown-timer"></div>
                 </div>
                 <div class="card-footer text-center">
-                    <a href="#" class="btn btn-success bidnow-btn">Bid Now</a>
+                    <a href="{{route('bid-auction',['lot_number' =>$product->lot_number])}}" class="btn btn-success bidnow-btn">Bid Now</a>
                 </div>
             </div>
         </div>

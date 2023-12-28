@@ -29,6 +29,7 @@ class Products extends Model
     'length', 
     'width', 
     'weight',
+    'highestBid',
     'image',
     'type',
     'is_archived'
@@ -41,6 +42,11 @@ class Products extends Model
 
     public function catalog(){
         return $this->belongsTo(Catalog::class,'catalog_id');
+    }
+
+    public function bids()
+    {
+        return $this->hasMany(Bids::class, 'lot_number');
     }
 }
 

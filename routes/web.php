@@ -5,7 +5,9 @@ use App\Http\Controllers\AuctionController;
 use Illuminate\Support\Facades\Route;
 use App\Models\Products;
 use App\Http\Controllers\CategoryController;
+use App\Http\Controllers\IndexController;
 use App\Http\Controllers\StudentController;
+use Faker\Guesser\Name;
 
 /*
 |--------------------------------------------------------------------------
@@ -21,15 +23,14 @@ use App\Http\Controllers\StudentController;
 Route::get('/', function () {
     $products = Products::latest('created_at')->take(8)->get();
     return view('index', ['products' => $products]);
-});
+})->name('/');
 
 Route::get('/dynamicForm', function () {
     return view('dynamicForm');
 }); 
 
-Route::get('/bid-auction', function () {
-    return view('bid-auction');
-}); 
+Route::get('/bid-auction/{lot_number}',[IndexController::class,'showBidAuction'])->name('bid-auction');
+Route::match(['get','post'],'/bidded-auction/{lot_number}',[AuctionController::class,'storeBidAuction'])->name('post-auction');
 
 Route::get('/test', function () {
     return view('test');
@@ -56,4 +57,5 @@ Route::get('admin/create-catalog',[AdminController::class,'displayCreateCatalog'
 Route::post('admin/create-catalog',[AdminController::class,'saveCatalog'])->name('save-catalog');
 Route::get('admin/assign-catalog',[AdminController::class,'displayAssignCatalog'])->name('display-assign-catalog');
 Route::post('admin/assign-catalog',[AdminController::class,'assignCatalog'])->name('assign-catalog');
+
 

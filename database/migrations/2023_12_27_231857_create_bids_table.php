@@ -13,12 +13,13 @@ return new class extends Migration
     {
         Schema::create('bids', function (Blueprint $table) {
             $table->id('bid_id');
-            $table->unsignedBigInteger('bid_amount');
+            $table->unsignedBigInteger('lot_number');
+            $table->decimal('bid_amount', 10, 2);
             $table->unsignedBigInteger('bid_user')->nullable();
             $table->timestamps();
             
 
-            // $table->foreign()
+            $table->foreign('lot_number')->references('lot_number')->on('products')->onDelete('cascade')->onUpdate('cascade');
         });
     }
 

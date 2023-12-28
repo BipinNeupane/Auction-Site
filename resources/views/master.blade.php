@@ -15,6 +15,16 @@
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
 </head>
 <body class="p-3 m-0 border-0 bd-example m-0 border-0">
+@error('bid_amount')
+        <div class="alert alert-danger">{{ $message }}</div>
+    @enderror
+
+    @if(session('success'))
+    <div class="alert alert-success">
+        {{ session('success') }}
+    </div>
+@endif
+
     @include('templates.navbar')
     @yield('content')
 </body>

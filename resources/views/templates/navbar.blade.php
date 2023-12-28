@@ -1,7 +1,7 @@
 <!-- Example Code -->
 <nav class="navbar navbar-expand-lg bg-body-tertiary ">
   <div class="container-fluid">
-    <a class="navbar-brand  justify-content-center" href="#">
+    <a class="navbar-brand  justify-content-center" href="{{route('/')}}">
       <h1 class="font-bebas-neue">Fotheby's <br></h1>
       <h6>Auction House</h6>
     </a>
@@ -47,19 +47,19 @@
   </div>
   <div class="carousel-inner">
     <div class="carousel-item active " data-bs-interval="3000">
-      <img src="painting.jpg" class="d-block w-100" alt="...">
+      <img src="{{ asset('painting.jpg') }}" class="d-block w-100" alt="...">
       <div class="carousel-caption d-none d-md-block">
         <h1 style="color:white; font-family: 'Bebas Neue', sans-serif;">Paitings</h1>
       </div>
     </div>
     <div class="carousel-item" data-bs-interval="3000">
-      <img src="carving.png" class="d-block w-100" alt="...">
+      <img src="{{ asset('carving.png') }}" class="d-block w-100" alt="...">
       <div class="carousel-caption d-none d-md-block">
         <h1 style="color:white; font-family: 'Bebas Neue', sans-serif;">Carvings</h1>
       </div>
     </div>
     <div class="carousel-item" data-bs-interval="3000">
-      <img src="sculpture.jpg" class="d-block w-100" alt="...">
+      <img src="{{ asset('sculpture.jpg') }}" class="d-block w-100" alt="...">
       <div class="carousel-caption d-none d-md-block">
         <h1 style="color:white; font-family: 'Bebas Neue', sans-serif;">Sculpture</h1>
 

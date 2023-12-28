@@ -97,3 +97,17 @@
 .information-container{
   background-color: lightgray;
 }
+
+.countdown-green{
+  color: green;
+}
+
+.countdown-red{
+  color: #D2042D;
+}
+
+.item-info {
+  font-size: 18px;
+  font-weight: bold;
+  margin-bottom: 10px;
+}

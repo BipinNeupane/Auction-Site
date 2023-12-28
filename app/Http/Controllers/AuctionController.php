@@ -3,7 +3,9 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Support\Facades\Log;
+use Illuminate\Validation\Rule;
 use App\Models\Products;
+use App\Models\Bids;
 use Illuminate\Http\Request;
 
 class AuctionController extends Controller
@@ -249,6 +251,47 @@ class AuctionController extends Controller
         $auction->save();
         return redirect(route('display-dashboard'))->with('success', 'Product edited successfully');
     }
+
+  
+   public function getHighestBid($lot_number){
+
+        $lastBidAmount = Bids::where('lot_number', $lot_number)
+        ->orderBy('bid_amount', 'desc')->first();
+    
+        if ($lastBidAmount) {
+            return $lastBidAmount->bid_amount;
+        } else {
+            return 0;
+        }
+    }
+
+
+    public function storeBidAuction(Request $request, $lot_number)
+    {
+        $highestBid = $this->getHighestBid($lot_number);
+    
+        $request->validate([
+            'bid_amount' => 'required|numeric|gt:' . $highestBid,
+        ], [
+            'bid_amount.gt' => 'Your bid must be higher than the last bid.',
+        ]);
+    
+        // Check if the bid amount is not greater than the highest bid
+        if ($request->input('bid_amount') <= $highestBid) {
+            return redirect()->back()->withErrors(['bid_amount' => 'Your bid must be higher than the last bid.'])->withInput();
+        }
+    
+        // First, insert the bid into the bids table
+        $bid = new Bids();
+        $bid->lot_number = $lot_number;
+        $bid->bid_amount = $request->input('bid_amount');
+        $bid->bid_user = 1; 
+        $bid->save();
+    
+        // Return a response or perform additional actions as needed
+        return redirect()->back()->with('success', 'Bid placed successfully.');
+    }
+
 
 
 }

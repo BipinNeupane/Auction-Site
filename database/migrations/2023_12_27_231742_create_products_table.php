@@ -41,7 +41,8 @@ return new class extends Migration
             ->on('catalogs')
             ->onDelete('cascade')
             ->onUpdate('cascade');
-  
+            
+            
         });
     }
 
