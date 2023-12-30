@@ -8,6 +8,7 @@ use App\Models\Products;
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\IndexController;
 use App\Http\Controllers\StudentController;
+use App\Models\Catalog;
 use Faker\Guesser\Name;
 
 /*
@@ -23,7 +24,8 @@ use Faker\Guesser\Name;
 
 Route::get('/', function () {
     $products = Products::latest('created_at')->take(8)->get();
-    return view('index', ['products' => $products]);
+    $catalog = Catalog::latest('start_date')->get();
+    return view('index', ['products' => $products,'catalogs' => $catalog]);
 })->name('/');
 
 Route::get('/category/{category_id}', [CategoryController::class,'displayProductsofCategory'])->name('category-page');
@@ -35,6 +37,8 @@ Route::get('/dynamicForm', function () {
 Route::get('/login', function () {
     return view('login');
 }); 
+
+Route::get('/catalog/{catalog_id}',[IndexController::class,'showCatalog'])->name('display-catalog-auction');
 
 Route::get('/bid-auction/{lot_number}',[IndexController::class,'showBidAuction'])->name('bid-auction');
 Route::match(['get','post'],'/bidded-auction/{lot_number}',[AuctionController::class,'storeBidAuction'])->name('post-auction');

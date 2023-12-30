@@ -2,7 +2,7 @@
 @section('title', 'Home')
 
 @section('content')
-<h1 class="text-center">Top Products</h1>
+<h1 class="text-center">{{$catalog->catalog_title}} Auction</h1>
 <br>
 <div class="container">
     <div class="row row-cols-2 row-cols-lg-4 g-2 g-lg-3">
@@ -24,20 +24,7 @@
     </div>
     <br>
     <hr>
-    <div class="container catalogue-container">
-        <h3 class="text-center">Upcoming Catalogue</h3>
-        <ol class="list-group list-group-numbered">
-            @foreach($catalogs as $catalog)
-            <a href="{{route('display-catalog-auction',['catalog_id' => $catalog->catalog_id])}}" class="catalog-list"><li class="list-group-item d-flex justify-content-between align-items-start">
-                <div class="ms-2 me-auto">
-                    <div class="fw-bold">{{$catalog->catalog_title}}</div>
-                    Starts from: {{$catalog->start_date}}
-                </div>
-            </li>
-            </a>
-            @endforeach
-        </ol>
-    </div>
+  
 </div>
 <br>
 </div>

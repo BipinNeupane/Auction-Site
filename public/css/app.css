@@ -5,109 +5,118 @@
     top: 0;
     background-color: #f8f9fa; /* Set your background color */
     z-index: 1000; /* Ensure the navbar is on top of other elements */
- }
- 
- .font-bebas-neue {
-    font-family: 'Bebas Neue', sans-serif;
+}
+
+.font-bebas-neue {
+    font-family: "Bebas Neue", sans-serif;
     /* Additional styling if necessary */
- }
+}
 
+.countdown-timer {
+    color: red;
+}
 
+.estimated-price {
+    color: green;
+    font-weight: bold;
+}
 
- .countdown-timer{
-  color: red;
- }
-
- .estimated-price{
-  color: green;
-  font-weight: bold;
- }
-
- .card-ca{
+.card-ca {
     border-width: 1px; /* Adjust the thickness as needed */
     border-style: solid;
-    border-color: #000; 
- }
- .card-ca:hover {
-  transform: scale(1.05); /* Adjust the scale factor as needed */
-  box-shadow: 0 0 15px rgba(0, 0, 0, 0.3); /* Add a shadow on hover */
+    border-color: #000;
 }
-
-
+.card-ca:hover {
+    transform: scale(1.05); /* Adjust the scale factor as needed */
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.3); /* Add a shadow on hover */
+}
 
 .auction-container {
-  
-  margin: 20px auto;
-  background-color: #fff;
-  
-  border-radius: 5px;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    margin: 20px auto;
+    background-color: #fff;
+
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 }
 
-.auction-container-row{
-  height:20px
+.auction-container-row {
+    height: 20px;
 }
 
 .item-image {
-  width: 100%;
-  height: auto;
+    width: 100%;
+    height: auto;
 }
 .item-details {
-  padding: 20px;
+    padding: 20px;
 }
 .item-title {
-  font-size: 1.5rem;
-  font-weight: bold;
-  margin-bottom: 10px;
+    font-size: 1.5rem;
+    font-weight: bold;
+    margin-bottom: 10px;
 }
 .bid-price {
-  font-size: 1.25rem;
-  font-weight: bold;
-  color: #007bff;
-  margin-bottom: 20px;
+    font-size: 1.25rem;
+    font-weight: bold;
+    color: #007bff;
+    margin-bottom: 20px;
 }
 .bid-input {
-  width: 70%;
-  padding: 8px;
-  margin-bottom: 10px;
+    width: 70%;
+    padding: 8px;
+    margin-bottom: 10px;
 }
 .bid-button {
-  background-color: #007bff;
-  color: #fff;
-  padding: 10px 20px;
-  font-size: 1.25rem;
-  border: none;
-  border-radius: 3px;
-  cursor: pointer;
+    background-color: #007bff;
+    color: #fff;
+    padding: 10px 20px;
+    font-size: 1.25rem;
+    border: none;
+    border-radius: 3px;
+    cursor: pointer;
 }
 .info-column {
-  margin-bottom: 20px;
+    margin-bottom: 20px;
 }
 .info-column h4 {
-  margin-bottom: 10px;
+    margin-bottom: 10px;
 }
 .bid-history {
-  border-top: 1px solid #dee2e6;
-  padding-top: 20px;
+    border-top: 1px solid #dee2e6;
+    padding-top: 20px;
 }
 .bid-history-item {
-  margin-bottom: 10px;
+    margin-bottom: 10px;
 }
 
-.information-container{
-  background-color: lightgray;
+.information-container {
+    background-color: lightgray;
 }
 
-.countdown-green{
-  color: green;
+.countdown-green {
+    color: green;
 }
 
-.countdown-red{
-  color: #D2042D;
+.countdown-red {
+    color: #d2042d;
 }
 
 .item-info {
-  font-size: 18px;
-  font-weight: bold;
-  margin-bottom: 10px;
+    font-size: 18px;
+    font-weight: bold;
+    margin-bottom: 10px;
+}
+
+.catalogue-container {
+    background-color: lightgray;
+    max-width: 800px; 
+    
+}
+
+.catalog-list{
+  text-decoration: none;
+}
+
+.list-group-item:hover{
+  background-color: #F8F8F8;
 }

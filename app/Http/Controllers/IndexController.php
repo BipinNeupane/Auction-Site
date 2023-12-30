@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Products;
 use App\Models\Bids;
+use App\Models\Catalog;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Date;
 
@@ -84,6 +85,12 @@ class IndexController extends Controller
         'auctionDate' => $auctionDate,
         'subjectClassification' => $subjectClassification,
     ]);
+}
+
+public function showCatalog($catalog_id){
+    $products = Products::where('catalog_id',$catalog_id)->get();
+    $catalog = Catalog::where('catalog_id',$catalog_id)->first();
+    return view('catalog-auction',['products'=> $products,'catalog'=> $catalog]);
 }
 
 }
