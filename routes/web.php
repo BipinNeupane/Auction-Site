@@ -26,7 +26,7 @@ Route::get('/', function () {
     return view('index', ['products' => $products]);
 })->name('/');
 
-Route::get('/category/{category_id}', CategoryController::class,'displayProductsofCategory')->name('category-page');
+Route::get('/category/{category_id}', [CategoryController::class,'displayProductsofCategory'])->name('category-page');
 
 Route::get('/dynamicForm', function () {
     return view('dynamicForm');
@@ -49,21 +49,30 @@ Route::get('/addAuction', function () {
 
 Route::post('/addAuction',[AuctionController::class, 'postProduct'])->name('posty');
 
-Route::post('students', [StudentController::class, 'store'])->name('save-student');
 
-Route::get('/admin/dashboard', [AdminController::class,'displayDashboard'] )->name('display-dashboard');;
-Route::get('/admin/products/manage', [AdminController::class,'displayProducts'] )->name('display-products');
-Route::get('/admin/archive-products/{lot_number}', [AdminController::class,'archiveProduct'] )->name('archive-product');
-Route::get('/admin/products/{lot_number}', [AdminController::class,'unarchiveProduct'] )->name('unarchive-product');
-Route::get('/admin/archived-products', [AdminController::class,'displayArchived'] )->name('display-archived-products');
-Route::delete('/admin/products/{lot_number}', [AdminController::class,'destroyProduct'] )->name('destroy-product');
-Route::get('/admin/edit-products/{lot_number}', [AdminController::class,'displayEditProduct'] )->name('display-edit-product');
-Route::get('/admin/view-product/{lot_number}', [AdminController::class,'viewProduct'] )->name('view-product');
-Route::match(['get', 'post'], '/admin/edit-auction/{lot_number}', [AuctionController::class,'editProduct'] )->name('edit-product');
-Route::get('admin/create-catalog',[AdminController::class,'displayCreateCatalog'])->name('create-catalog');
-Route::post('admin/create-catalog',[AdminController::class,'saveCatalog'])->name('save-catalog');
-Route::get('admin/assign-catalog',[AdminController::class,'displayAssignCatalog'])->name('display-assign-catalog');
-Route::post('admin/assign-catalog',[AdminController::class,'assignCatalog'])->name('assign-catalog');
+    
+Route::middleware(['isAdmin'])->prefix('admin')->group(function () {
+    
+        Route::get('/dashboard', [AdminController::class, 'displayDashboard'])->name('display-dashboard');
+    
+        Route::get('/products/manage', [AdminController::class, 'displayProducts'])->name('display-products');
+        Route::get('/archive-products/{lot_number}', [AdminController::class, 'archiveProduct'])->name('archive-product');
+        Route::get('/products/{lot_number}', [AdminController::class, 'unarchiveProduct'])->name('unarchive-product');
+        Route::get('/archived-products', [AdminController::class, 'displayArchived'])->name('display-archived-products');
+        Route::delete('/products/{lot_number}', [AdminController::class, 'destroyProduct'])->name('destroy-product');
+        Route::get('/edit-products/{lot_number}', [AdminController::class, 'displayEditProduct'])->name('display-edit-product');
+        Route::get('/view-product/{lot_number}', [AdminController::class, 'viewProduct'])->name('view-product');
+        Route::match(['get', 'post'], '/edit-auction/{lot_number}', [AuctionController::class, 'editProduct'])->name('edit-product');
+        Route::get('/create-catalog', [AdminController::class, 'displayCreateCatalog'])->name('create-catalog');
+        Route::post('/create-catalog', [AdminController::class, 'saveCatalog'])->name('save-catalog');
+        Route::get('/assign-catalog', [AdminController::class, 'displayAssignCatalog'])->name('display-assign-catalog');
+        Route::post('/assign-catalog', [AdminController::class, 'assignCatalog'])->name('assign-catalog');
+        Route::get('/display-clients/{role}', [AdminController::class, 'displayClients'])->name('display-clients');
+        Route::get('/view-client/{id}', [AdminController::class, 'viewClients'])->name('view-client');
+        Route::get('/edit-client/{id}', [AdminController::class, 'displayEditClient'])->name('display-edit-client');
+        Route::put('/update-user/{id}', [AdminController::class,'updateUser'])->name('update-client');
+        Route::delete('/delete-user/{id}', [AdminController::class, 'destroyUser'])->name('destroy-user');
+    });
 
 
 // Search functionality
@@ -75,3 +84,4 @@ Route::get('/register',[AuthController::class,'loadRegister'])->name('load-regis
 Route::post('/register',[AuthController::class,'register'])->name('register-user');
 Route::post('/login',[AuthController::class,'login'])->name('login-user');
 Route::get('/login',[AuthController::class,'logout'])->name('logout');
+Route::get('/dashboard',[AuthController::class,'toDashboard'])->name('to-dashboard');

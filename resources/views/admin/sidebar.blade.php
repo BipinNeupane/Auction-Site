@@ -17,7 +17,7 @@
                         <li class="w-100">
                             <a href="{{route('display-archived-products') }}" class="nav-link px-0">Archived</a>
                         </li>
-                    
+
                     </ul>
                 </li>
 
@@ -28,12 +28,12 @@
 
                     <ul class="collapse nav flex-column ms-1" id="submenu1" data-bs-parent="#menu">
                         <li class="w-100">
-                            <a href="#" class="nav-link px-0">Clients</a>
+                            <a href="{{route('display-clients',['role' => 1])}}" class="nav-link px-0">Clients</a>
                         </li>
                         <li class="w-100">
-                            <a href="#" class="nav-link px-0">Buyers</a>
+                            <a href="{{route('display-clients',['role' => 0])}}" class="nav-link px-0">Buyers</a>
                         </li>
-                    
+
                     </ul>
                 </li>
                 <li>
@@ -48,47 +48,23 @@
                         <li class="w-100">
                             <a href="{{route('display-assign-catalog')}}" class="nav-link px-0">Assign</a>
                         </li>
-                    
-                    </ul>
-                </li>
-                <li>
-                    <a href="#submenu2" data-bs-toggle="collapse" class="nav-link px-0 align-middle ">
-                        <i class="fs-4 bi-bootstrap"></i> <span class="ms-1 d-none d-sm-inline">Bootstrap</span></a>
-                    <ul class="collapse nav flex-column ms-1" id="submenu2" data-bs-parent="#menu">
-                        <li class="w-100">
-                            <a href="#" class="nav-link px-0"> <span class="d-none d-sm-inline">Item</span> 1</a>
-                        </li>
-                        <li>
-                            <a href="#" class="nav-link px-0"> <span class="d-none d-sm-inline">Item</span> 2</a>
-                        </li>
-                    </ul>
-                </li>
 
-                <li>
-                    <a href="#" class="nav-link px-0 align-middle">
-                        <i class="fs-4 bi-people"></i> <span class="ms-1 d-none d-sm-inline">Customers</span> </a>
+                    </ul>
                 </li>
+                
+
+             
             </ul>
             <hr>
             <div onclick="toggleDropdown()" class="dropdown pb-4">
-                <a href="#" class="d-flex align-items-center text-white text-decoration-none dropdown-toggle" id="dropdownUser1" data-bs-toggle="dropdown" aria-expanded="false">
-                    <img src="https://github.com/mdo.png" alt="hugenerd" width="30" height="30" class="rounded-circle">
-                    <span class="d-none d-sm-inline mx-1">loser</span>
-                </a>
-                <ul class="dropdown-menu dropdown-menu-dark text-small shadow">
-                    <li><a class="dropdown-item" href="#">New project...</a></li>
-                    <li><a class="dropdown-item" href="#">Settings</a></li>
-                    <li><a class="dropdown-item" href="#">Profile</a></li>
-                    <li>
-                        <hr class="dropdown-divider">
-                    </li>
-                    <li><a class="dropdown-item" href="#">Sign out</a></li>
-                </ul>
+            <i class="fa fa-sign-out" aria-hidden="true"></i>
+
+                <a href="{{route('logout')}}"><span class="d-none d-sm-inline mx-1">Logout</span></a>
             </div>
         </div>
     </div>
     <script>
-      
 
-       
+
+
     </script>

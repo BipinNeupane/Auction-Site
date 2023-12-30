@@ -67,6 +67,15 @@ class AuthController extends Controller
     public function logout(Request $request) {
         Auth::logout();
     
-        return redirect('/login-user'); // Redirect to the login page or any other desired route
+        return redirect('/login-user'); 
+    }
+
+    public function toDashboard(){
+        if(Auth::check() && Auth::user()->id == 2){
+            return redirect('admin/dashboard');
+        }
+        if(Auth::check() && Auth::user()->id == 1){
+            return redirect('/');
+        }
     }
 }
