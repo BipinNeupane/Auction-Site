@@ -7,6 +7,7 @@ use Illuminate\Validation\Rule;
 use App\Models\Products;
 use App\Models\Bids;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class AuctionController extends Controller
 {
@@ -268,6 +269,7 @@ class AuctionController extends Controller
 
     public function storeBidAuction(Request $request, $lot_number)
     {
+        if(Auth::check()){
         $highestBid = $this->getHighestBid($lot_number);
     
         $request->validate([
@@ -290,6 +292,10 @@ class AuctionController extends Controller
     
         // Return a response or perform additional actions as needed
         return redirect()->back()->with('success', 'Bid placed successfully.');
+    }
+    else{
+        return redirect('/login-user')->with('success','Please login before bidding.');
+    }
     }
 
 

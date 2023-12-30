@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\AuctionController;
+use App\Http\Controllers\AuthController;
 use Illuminate\Support\Facades\Route;
 use App\Models\Products;
 use App\Http\Controllers\CategoryController;
@@ -25,8 +26,14 @@ Route::get('/', function () {
     return view('index', ['products' => $products]);
 })->name('/');
 
+Route::get('/category/{category_id}', CategoryController::class,'displayProductsofCategory')->name('category-page');
+
 Route::get('/dynamicForm', function () {
     return view('dynamicForm');
+}); 
+
+Route::get('/login', function () {
+    return view('login');
 }); 
 
 Route::get('/bid-auction/{lot_number}',[IndexController::class,'showBidAuction'])->name('bid-auction');
@@ -59,3 +66,12 @@ Route::get('admin/assign-catalog',[AdminController::class,'displayAssignCatalog'
 Route::post('admin/assign-catalog',[AdminController::class,'assignCatalog'])->name('assign-catalog');
 
 
+// Search functionality
+Route::post('/search',[IndexController::class,'search'])->name('search-products');  
+Route::post('/search-filter',[IndexController::class,'filterSearch'])->name('filter-search');  
+
+Route::get('/login-user',[AuthController::class,'loadLogin'])->name('load-login');
+Route::get('/register',[AuthController::class,'loadRegister'])->name('load-register');
+Route::post('/register',[AuthController::class,'register'])->name('register-user');
+Route::post('/login',[AuthController::class,'login'])->name('login-user');
+Route::get('/login',[AuthController::class,'logout'])->name('logout');
